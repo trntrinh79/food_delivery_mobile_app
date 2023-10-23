@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_mobile_app/Firebase_auth/firebase_auth_services.dart';
 import 'package:food_delivery_mobile_app/constraint/app_button.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/fonts.dart';
+import 'package:food_delivery_mobile_app/pages/home_page.dart';
 import 'package:food_delivery_mobile_app/widget/Login_Page/sign_in.dart';
 
 class SignUp extends StatefulWidget {
@@ -13,6 +16,19 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  @override
+  void dispose() {
+    _userNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,21 +73,21 @@ class _SignUpState extends State<SignUp> {
                   ),
                   CustomTextField(
                     hintText: "User name",
-                    controller: TextEditingController(),
+                    controller: _userNameController,
                   ),
                   const SizedBox(
                     height: 16,
                   ),
                   CustomTextField(
                     hintText: "Email",
-                    controller: TextEditingController(),
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 16,
                   ),
                   CustomPasswordTextfield(
                     hintText: "Password",
-                    passwordController: TextEditingController(),
+                    passwordController: _passwordController,
                   ),
                   const SizedBox(
                     height: 32,
@@ -81,7 +97,7 @@ class _SignUpState extends State<SignUp> {
                     // passwordController.text.toString()),
                     child: AppButton(
                       text: "Sign Up",
-                      onPressed: () {},
+                      onPressed: signUp,
                     ),
                   ),
                   const SizedBox(
@@ -200,5 +216,22 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  void signUp() async {
+    String userName = _userNameController.text;
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signUpWithEmailandPassword(email, password);
+    if (user != null) {
+      print("Create account successfully");
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
   }
 }
