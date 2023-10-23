@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -5,23 +6,26 @@ import 'package:food_delivery_mobile_app/constraint/app_button.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/fonts.dart';
+import 'package:food_delivery_mobile_app/widget/Login_Page/sign_up.dart';
 
 class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+  SignIn({super.key});
+  TextEditingController controller = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 40),
+          margin: const EdgeInsets.only(top: 40),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
             child: Center(
               child: Column(
                 children: [
                   Image.asset("img/logo.png"),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
@@ -44,32 +48,39 @@ class SignIn extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 40,
                   ),
-                  Text("Sign In", style: AppFontStyle.HEADLINE_LARGE),
-                  SizedBox(
+                  const Text("Sign In", style: AppFontStyle.HEADLINE_LARGE),
+                  const SizedBox(
                     height: 32,
                   ),
                   CustomTextField(
                     hintText: "User name",
                     controller: TextEditingController(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   CustomPasswordTextfield(
                     hintText: "Password",
-                    controller: TextEditingController(),
+                    passwordController: TextEditingController(),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 32,
                   ),
-                  AppButton(text: "Sign In", onPressed: () {}),
-                  SizedBox(
+                  GestureDetector(
+                    // onTap: login(emailController.text.toString(),
+                    // passwordController.text.toString()),
+                    child: AppButton(
+                      text: "Sign In",
+                      onPressed: () {},
+                    ),
+                  ),
+                  const SizedBox(
                     height: 24,
                   ),
-                  Opacity(
+                  const Opacity(
                     opacity: 0.38,
                     child: Text(
                       "Or Continue with",
@@ -80,14 +91,14 @@ class SignIn extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 24,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 200,
+                        width: 230,
                         child: ElevatedButton(
                           onPressed: () {},
                           child: Row(
@@ -134,7 +145,9 @@ class SignIn extends StatelessWidget {
                           child: Image.asset("img/fblogo.png"),
                         ),
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.black, width: 1.0),
@@ -146,7 +159,33 @@ class SignIn extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(
+                    height: 170,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Dont have an account? ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Roboto',
+                          letterSpacing: 0.5,
+                          color: Color(0xFF8B93A2),
+                        ),
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUp()));
+                          },
+                          child: const Text("Sign Up",
+                              style: AppFontStyle.BODY_LARGE)),
+                    ],
+                  ),
                 ],
               ),
             ),
