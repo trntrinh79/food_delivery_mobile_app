@@ -4,10 +4,10 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class CustomPasswordTextfield extends StatefulWidget {
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController passwordController;
 
   const CustomPasswordTextfield(
-      {super.key, required this.hintText, required this.controller});
+      {super.key, required this.hintText, required this.passwordController});
 
   @override
   State<CustomPasswordTextfield> createState() =>
@@ -30,17 +30,15 @@ class _CustomPasswordTextfieldState extends State<CustomPasswordTextfield> {
       child: Row(
         children: [
           Expanded(
-            child: Opacity(
-              opacity: 0.38,
-              child: TextField(
-                controller: widget.controller,
-                obscureText: !_isPasswordVisible,
-                decoration: InputDecoration(
-                  hintText: widget.hintText,
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                  border: InputBorder.none,
-                ),
+            child: TextField(
+              controller: widget.passwordController,
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
+                hintStyle: TextStyle(color: Colors.grey),
+                hintText: widget.hintText,
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                border: InputBorder.none,
               ),
             ),
           ),
