@@ -1,29 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery_mobile_app/Firebase_auth/firebase_auth_services.dart';
 import 'package:food_delivery_mobile_app/constraint/app_button.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/custom_textfield.dart';
 import 'package:food_delivery_mobile_app/constraint/fonts.dart';
 import 'package:food_delivery_mobile_app/pages/home_page.dart';
-import 'package:food_delivery_mobile_app/widget/Login_Page/sign_in.dart';
+import 'package:food_delivery_mobile_app/pages/Login_Page/sign_up.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignIn extends StatefulWidget {
+  SignIn({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<SignIn> createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
-  final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
   @override
   void dispose() {
-    _userNameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -36,7 +37,7 @@ class _SignUpState extends State<SignUp> {
         child: Container(
           margin: const EdgeInsets.only(top: 40),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
+            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
             child: Center(
               child: Column(
                 children: [
@@ -67,19 +68,12 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Text("Sign Up", style: AppFontStyle.HEADLINE_LARGE),
+                  const Text("Sign In", style: AppFontStyle.HEADLINE_LARGE),
                   const SizedBox(
                     height: 32,
                   ),
                   CustomTextField(
                     hintText: "User name",
-                    controller: _userNameController,
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  CustomTextField(
-                    hintText: "Email",
                     controller: _emailController,
                   ),
                   const SizedBox(
@@ -96,8 +90,8 @@ class _SignUpState extends State<SignUp> {
                     // onTap: login(emailController.text.toString(),
                     // passwordController.text.toString()),
                     child: AppButton(
-                      text: "Sign Up",
-                      onPressed: signUp,
+                      text: "Sign In",
+                      onPressed: signIn,
                     ),
                   ),
                   const SizedBox(
@@ -184,13 +178,13 @@ class _SignUpState extends State<SignUp> {
                     ],
                   ),
                   const SizedBox(
-                    height: 105,
+                    height: 170,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Already have an account? ",
+                        "Dont have an account? ",
                         style: TextStyle(
                           fontSize: 16,
                           fontFamily: 'Roboto',
@@ -203,9 +197,9 @@ class _SignUpState extends State<SignUp> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => SignIn()));
+                                    builder: (context) => SignUp()));
                           },
-                          child: const Text("Sign In",
+                          child: const Text("Sign Up",
                               style: AppFontStyle.BODY_LARGE)),
                     ],
                   ),
@@ -218,14 +212,13 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  void signUp() async {
-    String userName = _userNameController.text;
+  void signIn() async {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    User? user = await _auth.signUpWithEmailandPassword(email, password);
+    User? user = await _auth.signInWithEmailandPassword(email, password);
     if (user != null) {
-      print("Create account successfully");
+      print("Login successfully!!");
       Navigator.push(
         context,
         MaterialPageRoute(

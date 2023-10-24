@@ -16,4 +16,11 @@ class AppFontStyle {
     letterSpacing: 0.5,
     color: Color(0xFF201A18),
   );
+  static const TextStyle TITLE_MEDIUM = TextStyle(
+    fontSize: 16,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.15,
+    color: Color.fromARGB(255, 3, 3, 3),
+  );
 }

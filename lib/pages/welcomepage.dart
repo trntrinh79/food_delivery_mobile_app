@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:food_delivery_mobile_app/constraint/colors.dart';
 import 'package:food_delivery_mobile_app/constraint/fonts.dart';
-import 'package:food_delivery_mobile_app/widget/Login_Page/sign_in.dart';
+import 'package:food_delivery_mobile_app/pages/Login_Page/sign_in.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
