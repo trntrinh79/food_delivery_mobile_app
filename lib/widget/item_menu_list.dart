@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/constraint/fonts.dart';
+import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
 // ItemMenuList class
 class ItemMenuList extends StatelessWidget {
@@ -9,23 +9,20 @@ class ItemMenuList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 34),
-      child: Column(
-        children: [
-          SizedBox(
-            width: 59,
-            height: 48,
-            child: Image.asset('img/$image'),
+    return Column(
+      children: [
+        SizedBox(
+          width: 59,
+          height: 48,
+          child: Image.asset('img/$image'),
+        ),
+        Flexible(
+          child: Text(
+            child,
+            style: AppFontStyle.TITLE_MEDIUM,
           ),
-          Flexible(
-            child: Text(
-              child,
-              style: AppFontStyle.TITLE_MEDIUM,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
