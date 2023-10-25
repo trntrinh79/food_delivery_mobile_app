@@ -219,7 +219,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   void signUp() async {
-    String userName = _userNameController.text;
+    // String userName = _userNameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 

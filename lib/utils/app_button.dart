@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
 class AppButton extends StatelessWidget {
   final String text;

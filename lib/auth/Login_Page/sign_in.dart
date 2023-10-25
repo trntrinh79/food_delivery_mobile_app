@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
 import 'package:food_delivery_mobile_app/utils/app_button.dart';
 import 'package:food_delivery_mobile_app/widget/custom_password_textfield.dart';

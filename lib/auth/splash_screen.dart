@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/utils/fonts.dart';
+
 import 'package:food_delivery_mobile_app/auth/welcomepage.dart';
 
 class SplashScreen extends StatelessWidget {
