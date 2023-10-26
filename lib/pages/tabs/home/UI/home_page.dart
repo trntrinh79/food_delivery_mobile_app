@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/home/bloc/home_bloc.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/chat_page.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/favorite_page.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/chat/UI/chat_page.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/favorite/UI/favorite_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/menu_page.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/order_page.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
 import 'package:food_delivery_mobile_app/widget/item_menu_list.dart';
 import 'package:food_delivery_mobile_app/widget/product_card.dart';
 
@@ -16,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final List<Widget> _children = [
+  final List<Widget> _childrenPages = [
     const HomePageWidget(
       listItemName: [
         "Sushi",
@@ -51,56 +53,66 @@ class _HomePageState extends State<HomePage> {
     const FavoriteFood(),
     const MenuPage(),
     const ChatPage(),
-    const OrderPage(),
+    const CartPage(),
   ];
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.grey[50],
-        elevation: 0,
-        toolbarHeight: 0,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: AppColor.appBG,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined, size: 24),
-                label: "",
-                activeIcon: Icon(Icons.home)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border, size: 24),
-                label: "",
-                activeIcon: Icon(Icons.favorite)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.widgets_outlined, size: 24),
-                label: "",
-                activeIcon: Icon(Icons.widgets)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.chat_outlined, size: 24),
-                label: "",
-                activeIcon: Icon(Icons.chat)),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.list_alt_outlined, size: 24),
-                label: "",
-                activeIcon: Icon(Icons.list_alt)),
-          ],
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          onTap: _onItemBottomnavigationTapped,
-          selectedItemColor: Colors.black),
-      body: _children[_selectedIndex],
-    );
-  }
+    final HomeBloc homeBloc = HomeBloc();
 
-  void _onItemBottomnavigationTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    return BlocConsumer<HomeBloc, HomeState>(
+      bloc: homeBloc,
+      listener: (context, state) {},
+      // listenWhen: (previous, current) {},
+      // buildWhen: (previous, current) {},
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.grey[50],
+            elevation: 0,
+            toolbarHeight: 0,
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+              backgroundColor: AppColor.appBG,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: InkWell(child: Icon(Icons.home_outlined, size: 24)),
+                    label: "",
+                    activeIcon: Icon(Icons.home)),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite_border, size: 24),
+                    label: "",
+                    activeIcon: Icon(Icons.favorite)),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.widgets_outlined, size: 24),
+                    label: "",
+                    activeIcon: Icon(Icons.widgets)),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.chat_outlined, size: 24),
+                    label: "",
+                    activeIcon: Icon(Icons.chat)),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.list_alt_outlined, size: 24),
+                    label: "",
+                    activeIcon: Icon(Icons.list_alt)),
+              ],
+              type: BottomNavigationBarType.fixed,
+              currentIndex: state.tabIndex,
+              onTap: (index) {
+                homeBloc.add(TabChange(tabIndex: index));
+                if (index == 1) {
+                  homeBloc.add(HomeFavoriteButtonNavigateEvent());
+                } else if (index == 4) {
+                  homeBloc.add(HomeCartButtonNavigateEvent());
+                }
+              },
+              selectedItemColor: Colors.black),
+          body: _childrenPages[state.tabIndex],
+        );
+      },
+    );
   }
 }
 
