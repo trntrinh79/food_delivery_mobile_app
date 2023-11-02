@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/constraint/fonts.dart';
-import 'package:food_delivery_mobile_app/widget/welcomepage.dart';
+
+import 'package:food_delivery_mobile_app/auth/welcomepage.dart';
 
 class SplashScreen extends StatelessWidget {
   Future<void> _navigateToNextScreen(BuildContext context) async {

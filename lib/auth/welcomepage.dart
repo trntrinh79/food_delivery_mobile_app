@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:food_delivery_mobile_app/constraint/colors.dart';
-import 'package:food_delivery_mobile_app/constraint/fonts.dart';
-import 'package:food_delivery_mobile_app/widget/Login_Page/sign_in.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
+
+import 'package:food_delivery_mobile_app/utils/colors.dart';
+import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -36,7 +36,7 @@ class _WelcomePageState extends State<WelcomePage> {
         _pageController.page! < imagesList.length - 1) {
       _pageController.animateToPage(
         _pageController.page!.toInt() + 1,
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     }
@@ -63,10 +63,12 @@ class _WelcomePageState extends State<WelcomePage> {
                     Container(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const MainPage()));
                       },
-                      child: Text(
+                      child: const Text(
                         "Skip",
                         style: TextStyle(
                           color: AppColor.appTheme,
@@ -77,7 +79,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Center(
@@ -97,24 +99,24 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 65,
               ),
               Center(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       Text(
                         texttitleList[index],
                         style: AppFontStyle.HEADLINE_LARGE,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       Text(
                         textsList[index],
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 16,
                             fontFamily: 'Roboto',
                             color: Colors.black26),
@@ -124,7 +126,7 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Row(
@@ -137,8 +139,8 @@ class _WelcomePageState extends State<WelcomePage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         color: index == indexDots
-                            ? Color(0xFFDA7455)
-                            : Color.fromARGB(255, 235, 181, 106)
+                            ? const Color(0xFFDA7455)
+                            : const Color.fromARGB(255, 235, 181, 106)
                           ..withOpacity(0.3)),
                   );
                 }),

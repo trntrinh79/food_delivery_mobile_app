@@ -1,17 +1,37 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:food_delivery_mobile_app/constraint/app_button.dart';
-import 'package:food_delivery_mobile_app/constraint/custom_password_textfield.dart';
-import 'package:food_delivery_mobile_app/constraint/custom_textfield.dart';
-import 'package:food_delivery_mobile_app/constraint/fonts.dart';
-import 'package:food_delivery_mobile_app/widget/Login_Page/sign_up.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignIn extends StatelessWidget {
+import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
+import 'package:food_delivery_mobile_app/utils/app_button.dart';
+import 'package:food_delivery_mobile_app/widget/custom_password_textfield.dart';
+import 'package:food_delivery_mobile_app/widget/custom_textfield.dart';
+import 'package:food_delivery_mobile_app/utils/fonts.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
+import 'package:food_delivery_mobile_app/auth/Login_Page/sign_up.dart';
+
+class SignIn extends StatefulWidget {
   SignIn({super.key});
-  TextEditingController controller = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,14 +77,14 @@ class SignIn extends StatelessWidget {
                   ),
                   CustomTextField(
                     hintText: "User name",
-                    controller: TextEditingController(),
+                    controller: _emailController,
                   ),
                   const SizedBox(
                     height: 16,
                   ),
                   CustomPasswordTextfield(
                     hintText: "Password",
-                    passwordController: TextEditingController(),
+                    passwordController: _passwordController,
                   ),
                   const SizedBox(
                     height: 32,
@@ -74,7 +94,7 @@ class SignIn extends StatelessWidget {
                     // passwordController.text.toString()),
                     child: AppButton(
                       text: "Sign In",
-                      onPressed: () {},
+                      onPressed: signIn,
                     ),
                   ),
                   const SizedBox(
@@ -193,5 +213,23 @@ class SignIn extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void signIn() async {
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signInWithEmailandPassword(email, password);
+    if (user != null) {
+      await BlocProvider.of<AppCubit>(context).getData;
+
+      print("Login successfully!!");
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainPage(),
+        ),
+      );
+    }
   }
 }

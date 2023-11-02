@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
-  final TextEditingController controller;
+  TextEditingController controller;
 
-  const CustomTextField({
+  CustomTextField({
     super.key,
     required this.hintText,
     required this.controller,
