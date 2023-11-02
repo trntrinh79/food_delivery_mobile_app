@@ -14,7 +14,7 @@ class ItemMenuList extends StatelessWidget {
         SizedBox(
           width: 59,
           height: 48,
-          child: Image.asset('img/$image'),
+          child: Image.asset('assets/img/$image'),
         ),
         Flexible(
           child: Text(

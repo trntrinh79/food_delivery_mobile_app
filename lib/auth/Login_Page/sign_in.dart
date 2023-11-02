@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
 import 'package:food_delivery_mobile_app/utils/app_button.dart';
 import 'package:food_delivery_mobile_app/widget/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/widget/custom_textfield.dart';
@@ -218,11 +221,13 @@ class _SignInState extends State<SignIn> {
 
     User? user = await _auth.signInWithEmailandPassword(email, password);
     if (user != null) {
+      await BlocProvider.of<AppCubit>(context).getData;
+
       print("Login successfully!!");
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => MainPage(),
         ),
       );
     }

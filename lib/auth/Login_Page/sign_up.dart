@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
 import 'package:food_delivery_mobile_app/utils/app_button.dart';
 import 'package:food_delivery_mobile_app/widget/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/widget/custom_textfield.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
 import 'package:food_delivery_mobile_app/auth/Login_Page/sign_in.dart';
 
 class SignUp extends StatefulWidget {
@@ -229,7 +229,7 @@ class _SignUpState extends State<SignUp> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => MainPage(),
         ),
       );
     }

@@ -1,6 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit_logics.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/data/food_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,10 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-      },
+      home: BlocProvider<AppCubit>(
+        create: (context) => AppCubit(
+          FoodData(),
+        ),
+        child: const AppCubitLogics(),
+      ),
     );
   }
 }

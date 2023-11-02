@@ -20,7 +20,8 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeLoadedSuccessState extends HomeState {
-  const HomeLoadedSuccessState(super.tabIndex);
+  final List<ProductDataModel> products;
+  const HomeLoadedSuccessState(super.tabIndex, this.products);
 }
 
 class HomeErrorState extends HomeState {

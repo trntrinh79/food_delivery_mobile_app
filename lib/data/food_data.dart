@@ -1,5 +1,5 @@
 class FoodData {
-  List<Map<String, dynamic>> foodData = [
+  static List<Map<String, dynamic>> foodData = [
     {
       "id": 1,
       "name": "Burger",
@@ -78,7 +78,7 @@ class FoodData {
       "description": "Juicy steak with a side of mashed potatoes and veggies.",
       "price": 19.99,
       "imageUrl":
-          "https://png.pngtree.com/png-vector/20230413/ourmid/pngtree-steak-cartoon-pattern-png-image_6699170.png",
+          "https://banner2.cleanpng.com/20180329/jzq/kisspng-delmonico-steak-beefsteak-chophouse-restaurant-str-beef-steak-5abda22a917450.4201272415223772585958.jpg",
       "category": "Steakhouse",
     },
     {

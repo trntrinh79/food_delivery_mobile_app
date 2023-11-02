@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_mobile_app/data/food_data.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/home/model/home_product_data_model.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
 class ProductCard extends StatelessWidget {
-  ProductCard(
-      {super.key,
-      required this.image,
-      required this.title,
-      required this.price});
-  late String image;
-  late String title;
-  late String price;
+  ProductCard({super.key, required this.productDataModel});
+
+  final ProductDataModel productDataModel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,15 +22,22 @@ class ProductCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Align(
+            Align(
               alignment: Alignment.topRight,
-              child: Icon(Icons.favorite_border_rounded),
+              child: GestureDetector(
+                  onTap: () {},
+                  child: const Icon(Icons.favorite_border_rounded)),
             ),
             const SizedBox(
               height: 12,
             ),
-            Image(
-              image: AssetImage("img/$image"),
+            Container(
+              width: 286,
+              height: 250,
+              child: Image(
+                // image: AssetImage("img/$image"),
+                image: NetworkImage(productDataModel.imageUrl),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -44,7 +49,7 @@ class ProductCard extends StatelessWidget {
                   child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        title,
+                        productDataModel.name,
                         style: AppFontStyle.TITLE_PRODUCT,
                       )),
                 ),
@@ -54,7 +59,7 @@ class ProductCard extends StatelessWidget {
                     Opacity(
                       opacity: 0.38,
                       child: Text(
-                        price,
+                        "\$" + productDataModel.price.toString(),
                         style: AppFontStyle.TITLE_LARGE,
                       ),
                     ),
