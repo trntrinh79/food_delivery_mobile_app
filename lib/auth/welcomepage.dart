@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
 
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
@@ -42,6 +43,7 @@ class _WelcomePageState extends State<WelcomePage> {
     }
   }
 
+  final lastPage = PageController(initialPage: 2);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,10 +65,11 @@ class _WelcomePageState extends State<WelcomePage> {
                     Container(),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MainPage()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => const MainPage()));
+                        BlocProvider.of<AppCubit>(context).getData();
                       },
                       child: const Text(
                         "Skip",
@@ -90,7 +93,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         margin: EdgeInsets.only(top: 10),
                         width: 334,
                         height: 280,
-                        child: Image.asset("img/" + imagesList[index]),
+                        child: Image.asset("assets/img/" + imagesList[index]),
                       ),
                       const SizedBox(
                         height: 50,
@@ -154,7 +157,8 @@ class _WelcomePageState extends State<WelcomePage> {
                         onTap: _goToNextPage,
                         child: Container(
                           child: Image(
-                            image: AssetImage("img/" + buttonnextList[index]),
+                            image: AssetImage(
+                                "assets/img/" + buttonnextList[index]),
                           ),
                         ),
                       )),
