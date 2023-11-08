@@ -104,8 +104,16 @@ class HomePage extends StatelessWidget {
                             bool last = info.length == (index + 1);
                             return Padding(
                               padding: EdgeInsets.only(right: last ? 0 : 20),
-                              child: ProductCard(
-                                productDataModel: info[index],
+                              child: GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<AppCubit>(context)
+                                      .detailPage(info[index]);
+                                },
+                                child: Container(
+                                  child: ProductCard(
+                                    productDataModel: info[index],
+                                  ),
+                                ),
                               ),
                             );
                           }),

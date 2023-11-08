@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/data/food_data.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/home/model/home_product_data_model.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
@@ -35,7 +34,6 @@ class ProductCard extends StatelessWidget {
               width: 286,
               height: 250,
               child: Image(
-                // image: AssetImage("img/$image"),
                 image: NetworkImage(productDataModel.imageUrl),
               ),
             ),

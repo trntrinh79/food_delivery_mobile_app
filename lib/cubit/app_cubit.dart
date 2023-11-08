@@ -8,12 +8,10 @@ import 'package:meta/meta.dart';
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit(this.data) : super(AppInitial()) {
-    Future<void>.delayed(const Duration(seconds: 2));
+  AppCubit({required this.data}) : super(AppInitial()) {
+    emit(WelcomeState());
 
-    // emit(WelcomeState());
-
-    emit(LoadedState(listData));
+    // emit(LoadedState(listData));
     // print(places);
   }
   final FoodData data;
@@ -30,24 +28,24 @@ class AppCubit extends Cubit<AppState> {
 
   void getData() async {
     try {
-      await Future<void>.delayed(const Duration(seconds: 3));
-      emit(LoadingState());
+      await Future(() => emit(LoadingState()));
+      await Future<void>.delayed(const Duration(seconds: 2));
       places = listData;
       emit(LoadedState(places));
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 
-  // gohome() {
-  //   emit(LoadedState(places));
-  // }
+  goHome() {
+    emit(LoadedState(places));
+  }
+
+  detailPage(ProductDataModel data) {
+    emit(DetailState(data));
+  }
+
+  cartPage(ProductDataModel data) {
+    emit(CartLoadedState(data));
+  }
 }
-
-
-// FoodData.foodData
-//             .map((e) => ProductDataModel(
-//                 id: e["id"],
-//                 name: e["name"],
-//                 description: e["description"],
-//                 price: e["price"],
-//                 imageUrl: e["imageUrl"]))
-//             .toList(),

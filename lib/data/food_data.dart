@@ -60,7 +60,7 @@ class FoodData {
       "description": "Crispy chicken wings with your choice of sauce.",
       "price": 8.99,
       "imageUrl":
-          "https://c8.alamy.com/comp/2RHN7XH/grilled-chicken-wings-vector-flat-minimalistic-isolated-2RHN7XH.jpg",
+          "https://cdn.icon-icons.com/icons2/3277/PNG/512/fried_chicken_bucket_chicken_wings_food_icon_208005.png",
       "category": "Appetizers",
     },
     {
@@ -69,7 +69,7 @@ class FoodData {
       "description": "Taco with seasoned ground beef and fresh toppings.",
       "price": 3.99,
       "imageUrl":
-          "https://st5.depositphotos.com/10054616/63470/i/450/depositphotos_634702018-stock-illustration-tacos-mexican-dish-tortilla-filled.jpg",
+          "https://cdn.icon-icons.com/icons2/1447/PNG/512/32387taco_98856.png",
       "category": "Mexican",
     },
     {
@@ -77,8 +77,7 @@ class FoodData {
       "name": "Steak",
       "description": "Juicy steak with a side of mashed potatoes and veggies.",
       "price": 19.99,
-      "imageUrl":
-          "https://banner2.cleanpng.com/20180329/jzq/kisspng-delmonico-steak-beefsteak-chophouse-restaurant-str-beef-steak-5abda22a917450.4201272415223772585958.jpg",
+      "imageUrl": "https://cdn-icons-png.flaticon.com/512/856/856113.png",
       "category": "Steakhouse",
     },
     {

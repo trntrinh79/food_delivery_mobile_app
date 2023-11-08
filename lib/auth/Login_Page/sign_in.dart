@@ -5,12 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/main_page.dart';
+import 'package:food_delivery_mobile_app/pages/others/main_page.dart';
 import 'package:food_delivery_mobile_app/utils/app_button.dart';
 import 'package:food_delivery_mobile_app/widget/custom_password_textfield.dart';
 import 'package:food_delivery_mobile_app/widget/custom_textfield.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
 import 'package:food_delivery_mobile_app/auth/Login_Page/sign_up.dart';
 
 class SignIn extends StatefulWidget {
