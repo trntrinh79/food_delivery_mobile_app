@@ -12,24 +12,21 @@ class AppButton extends StatelessWidget {
       width: double.maxFinite,
       child: ElevatedButton(
           onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFFDA7455),
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
           child: Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.white,
                 fontFamily: "Roboto",
                 fontWeight: FontWeight.w500,
                 fontSize: 16),
-            // TextStyle(
-            //   color: Colors.white,
-            //   fontSize: 16.0,
-            // ),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFFDA7455),
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
           )),
     );
   }

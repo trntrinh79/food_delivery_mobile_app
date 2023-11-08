@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+
 import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/chat/UI/chat_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/favorite/UI/favorite_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/bloc/home_bloc.dart';
+
 import 'package:food_delivery_mobile_app/pages/tabs/menu_page.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 
