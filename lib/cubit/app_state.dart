@@ -32,3 +32,16 @@ class DetailState extends AppState {
   @override
   List<Object> get props => [place];
 }
+
+class CartLoadingState extends AppState {
+  @override
+  List<Object> get props => [];
+}
+
+class CartLoadedState extends AppState {
+  final ProductDataModel cartData;
+
+  CartLoadedState(this.cartData);
+  @override
+  List<Object> get props => [cartData];
+}
