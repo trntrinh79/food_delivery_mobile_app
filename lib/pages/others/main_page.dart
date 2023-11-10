@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_mobile_app/cubit/navigation_cubit.dart';
-import 'package:food_delivery_mobile_app/cubit/navigationbar_item.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigation_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigationbar_item.dart';
+import 'package:food_delivery_mobile_app/model/home_product_data_model.dart';
 
 import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/chat/UI/chat_page.dart';
@@ -10,6 +12,7 @@ import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
 
 import 'package:food_delivery_mobile_app/pages/tabs/menu_page.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
+import 'package:food_delivery_mobile_app/widget/product_card.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -110,7 +113,7 @@ class _MainPageState extends State<MainPage> {
           } else if (state.navbarItem == NavbarItem.chat) {
             return const ChatPage();
           } else if (state.navbarItem == NavbarItem.cart) {
-            return const CartPage();
+            return CartPage();
           }
           return Container();
         },

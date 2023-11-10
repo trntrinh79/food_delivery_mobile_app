@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_mobile_app/auth/welcomepage.dart';
-import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/pages/others/detail_page.dart';
 import 'package:food_delivery_mobile_app/pages/others/main_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
@@ -25,7 +25,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
           }
           if (state is DetailState) {
             print("detail state");
-            return const DetailPage();
+            return DetailPage();
           }
           if (state is LoadedState) {
             print("Loaded state");
@@ -43,9 +43,9 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
               child: CircularProgressIndicator(),
             );
           }
-          if (state is CartLoadedState) {
+          if (state is CartUpdatedState) {
             print("Cart Loaded state");
-            return const CartPage();
+            return CartPage();
           } else {
             print("Error State");
             return Container();

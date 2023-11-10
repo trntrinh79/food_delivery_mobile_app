@@ -3,13 +3,19 @@ import 'package:food_delivery_mobile_app/model/home_product_data_model.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
-class ProductCard extends StatelessWidget {
-  ProductCard({super.key, required this.productDataModel});
+class CartCard extends StatelessWidget {
+  CartCard({super.key, required this.productDataModel});
 
   final ProductDataModel productDataModel;
 
   @override
   Widget build(BuildContext context) {
+    var quantity = productDataModel.quantity;
+    quantity = 2;
+    var price = productDataModel.price;
+    var totalPrice = quantity * price;
+    productDataModel.totalPrice = totalPrice;
+
     return Container(
       width: 400,
       decoration: BoxDecoration(
@@ -66,7 +72,19 @@ class ProductCard extends StatelessWidget {
                       size: 24,
                     )
                   ],
-                )
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      "Total Price: ",
+                      style: AppFontStyle.TITLE_PRODUCT,
+                    ),
+                    Text(
+                      productDataModel.totalPrice.toString(),
+                      style: AppFontStyle.TITLE_PRODUCT,
+                    ),
+                  ],
+                ),
               ],
             )
           ],

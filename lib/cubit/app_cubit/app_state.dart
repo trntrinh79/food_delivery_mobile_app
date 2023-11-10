@@ -38,10 +38,11 @@ class CartLoadingState extends AppState {
   List<Object> get props => [];
 }
 
-class CartLoadedState extends AppState {
-  final ProductDataModel cartData;
+class CartUpdatedState extends AppState {
+  final List<ProductDataModel> cartItems;
 
-  CartLoadedState(this.cartData);
+  CartUpdatedState(this.cartItems);
+
   @override
-  List<Object> get props => [cartData];
+  List<Object> get props => [cartItems];
 }

@@ -5,7 +5,11 @@ class ProductDataModel {
   final String description;
   final double price;
   final String imageUrl;
+  final int quantity;
+  late double totalPrice;
   ProductDataModel({
+    required this.quantity,
+    required this.totalPrice,
     required this.id,
     required this.name,
     required this.description,

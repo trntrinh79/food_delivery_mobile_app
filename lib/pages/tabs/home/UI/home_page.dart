@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:food_delivery_mobile_app/cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
 import 'package:food_delivery_mobile_app/widget/item_menu_list.dart';
 import 'package:food_delivery_mobile_app/widget/product_card.dart';
@@ -26,7 +26,6 @@ class HomePage extends StatelessWidget {
         );
       }
       if (state is LoadedState) {
-        final loadedState = state as LoadedState;
         var info = state.places;
         return SafeArea(
           child: Padding(
