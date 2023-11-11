@@ -5,11 +5,11 @@ class ProductDataModel {
   final String description;
   final double price;
   final String imageUrl;
-  final int quantity;
-  late double totalPrice;
+  int quantity;
+  double totalPrice;
   ProductDataModel({
-    required this.quantity,
-    required this.totalPrice,
+    this.quantity = 0,
+    this.totalPrice = 0.0,
     required this.id,
     required this.name,
     required this.description,

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/cart_cubit/cubit/cart_cubit.dart';
-import 'package:food_delivery_mobile_app/model/home_product_data_model.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
 import 'package:food_delivery_mobile_app/utils/app_icon.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';

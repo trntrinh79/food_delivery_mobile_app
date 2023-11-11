@@ -44,17 +44,4 @@ class AppCubit extends Cubit<AppState> {
   detailPage(ProductDataModel data) {
     emit(DetailState(data));
   }
-
-  // addToCart(ProductDataModel item) {
-  //   cartItems.add(item);
-  //   emit(CartUpdatedState(cartItems));
-  // }
-
-  void addToCart(ProductDataModel product) {
-    if (state is CartUpdatedState) {
-      final updatedCartItems = List<ProductDataModel>.from(
-          (state as CartUpdatedState).cartItems..add(product));
-      emit(CartUpdatedState(updatedCartItems));
-    } else {}
-  }
 }

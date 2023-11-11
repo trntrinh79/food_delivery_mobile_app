@@ -46,39 +46,71 @@ class _CartPageState extends State<CartPage> {
               elevation: 0,
               toolbarHeight: 0,
             ),
-            body: SafeArea(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Helooooooooo",
-                      style: AppFontStyle.HEADLINE_LARGE,
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * .7,
-                      child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: item.length,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, int index) {
-                            bool last = item.length == (index + 1);
-                            return Padding(
-                              padding: EdgeInsets.only(right: last ? 0 : 20),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
+            body: SingleChildScrollView(
+              child: SafeArea(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Center(
+                        child: Text(
+                          "Cart",
+                          style: AppFontStyle.HEADLINE_LARGE,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 38,
+                      ),
+                      SizedBox(
+                        child: ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: item.length,
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (context, int index) {
+                              bool last = item.length == (index + 1);
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: last ? 0 : 16),
+                                child: GestureDetector(
+                                  onTap: () {},
                                   child:
                                       CartCard(productDataModel: item[index]),
                                 ),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                    ],
+                  ),
                 ),
+              ),
+            ),
+            bottomNavigationBar: Container(
+              height: 150,
+              width: 300,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              child: const Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Subtotal:",
+                        style: AppFontStyle.TITLE_MEDIUM,
+                      ),
+                      Text(
+                        "\$78.00",
+                        style: AppFontStyle.TITLE_MEDIUM,
+                      ),
+                    ],
+                  )
+                ],
               ),
             ),
           );
