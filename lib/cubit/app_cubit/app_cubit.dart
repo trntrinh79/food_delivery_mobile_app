@@ -20,7 +20,7 @@ class AppCubit extends Cubit<AppState> {
       List<ProductDataModel> listData = FoodData.foodData
           .map((e) => ProductDataModel(
                 quantity: e["quantity"],
-                totalPrice: e["totalPrice"],
+                totalItemPrice: e["totalPrice"],
                 id: e["id"],
                 name: e["name"],
                 description: e["description"],

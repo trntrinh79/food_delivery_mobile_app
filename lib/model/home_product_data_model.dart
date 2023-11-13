@@ -6,10 +6,12 @@ class ProductDataModel {
   final double price;
   final String imageUrl;
   int quantity;
-  double totalPrice;
+  double totalItemPrice;
+  double totalCartPrice;
   ProductDataModel({
     this.quantity = 0,
-    this.totalPrice = 0.0,
+    this.totalItemPrice = 0.0,
+    this.totalCartPrice = 0.0,
     required this.id,
     required this.name,
     required this.description,

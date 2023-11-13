@@ -17,14 +17,9 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   @override
-  void initState() {
-    super.initState();
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CartCubit, CartState>(
+    return BlocConsumer<CartCubit, CartState>(
+      listener: (context, state) {},
       builder: (context, state) {
         if (state is CartLoadingState) {
           return const Scaffold(
@@ -34,12 +29,10 @@ class _CartPageState extends State<CartPage> {
           );
         }
         if (state is CartLoadedState) {
-          // var quantity = productDataModel.quantity;
-          // var price = productDataModel.price;
-          // var totalPrice = quantity * price;
-          // productDataModel.totalPrice = totalPrice;
+          final cartCubit = context.read<CartCubit>();
+          double totalCartValue = cartCubit.calculateTotalCartValue();
           var item = state.productList;
-          print("Updated Cart Page");
+          print("${totalCartValue}");
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.grey[50],
@@ -69,13 +62,13 @@ class _CartPageState extends State<CartPage> {
                             itemCount: item.length,
                             scrollDirection: Axis.vertical,
                             itemBuilder: (context, int index) {
+                              final product = state.productList[index];
                               bool last = item.length == (index + 1);
                               return Padding(
                                 padding: EdgeInsets.only(bottom: last ? 0 : 16),
                                 child: GestureDetector(
                                   onTap: () {},
-                                  child:
-                                      CartCard(productDataModel: item[index]),
+                                  child: CartCard(productDataModel: product),
                                 ),
                               );
                             }),
@@ -95,21 +88,21 @@ class _CartPageState extends State<CartPage> {
                 color: Colors.white,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: const Column(
+              child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Subtotal:",
+                      const Text(
+                        "Total:",
                         style: AppFontStyle.TITLE_MEDIUM,
                       ),
                       Text(
-                        "\$78.00",
+                        "\$${totalCartValue.toString()}",
                         style: AppFontStyle.TITLE_MEDIUM,
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

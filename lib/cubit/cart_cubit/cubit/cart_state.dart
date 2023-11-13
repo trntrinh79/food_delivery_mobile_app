@@ -18,8 +18,9 @@ class CartLoadingState extends CartState {
 
 class CartLoadedState extends CartState {
   final List<ProductDataModel> productList;
+  final double totalCartPrice;
 
-  CartLoadedState(this.productList);
+  CartLoadedState(this.productList, this.totalCartPrice);
   @override
-  List<Object> get props => [productList];
+  List<Object> get props => [productList, totalCartPrice];
 }

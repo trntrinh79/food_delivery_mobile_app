@@ -92,7 +92,8 @@ class _CartCardState extends State<CartCard> {
                         height: 18,
                       ),
                       Text(
-                        "\$" + widget.productDataModel.totalPrice.toString(),
+                        "\$" +
+                            widget.productDataModel.totalItemPrice.toString(),
                         style: AppFontStyle.TITLE_LARGE,
                       ),
                     ],
