@@ -57,7 +57,7 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  void removeFromCart(ProductDataModel product) {
+  Future<void> removeFromCart(ProductDataModel product) async {
     productList.removeWhere((item) => item.id == product.id);
     emit(CartLoadedState(List.from(productList), product.totalCartPrice));
   }
@@ -74,5 +74,22 @@ class CartCubit extends Cubit<CartState> {
       total += product.totalItemPrice;
     }
     return double.parse(total.toStringAsFixed(2));
+  }
+
+  void loadCartItems() {
+    try {
+      // Simulate fetching cart items
+      List<ProductDataModel> cartItems =
+          productList; // Fetch items from your data source
+
+      double totalCartValue =
+          cartItems.fold(0, (sum, item) => sum + item.totalCartPrice);
+
+      // Emit the loaded state with cart items and total value
+      emit(CartLoadedState(cartItems, totalCartValue));
+    } catch (e) {
+      // In case of an error, you might want to emit an error state
+      print(e); // Log the error
+    }
   }
 }

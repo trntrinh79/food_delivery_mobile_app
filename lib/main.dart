@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit_logics.dart';
-import 'package:food_delivery_mobile_app/cubit/cart_cubit/cubit/cart_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigation_cubit.dart';
 import 'package:food_delivery_mobile_app/data/food_data.dart';
 
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<NavigationCubit>(
           create: (context) => NavigationCubit(),
+        ),
+        BlocProvider<FavoriteCubit>(
+          create: (context) => FavoriteCubit(),
         ),
       ],
       child: const MaterialApp(

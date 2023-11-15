@@ -6,8 +6,8 @@ import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigationbar_item.dart
 import 'package:food_delivery_mobile_app/pages/tabs/cart/UI/cart_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/chat/UI/chat_page.dart';
 import 'package:food_delivery_mobile_app/pages/tabs/favorite/UI/favorite_page.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/UI/home_page.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/menu_page.dart';
+import 'package:food_delivery_mobile_app/pages/tabs/home/home_page.dart';
+import 'package:food_delivery_mobile_app/pages/others/menu_page.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 
 class MainPage extends StatefulWidget {

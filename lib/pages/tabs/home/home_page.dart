@@ -108,10 +108,8 @@ class HomePage extends StatelessWidget {
                                   BlocProvider.of<AppCubit>(context)
                                       .detailPage(info[index]);
                                 },
-                                child: Container(
-                                  child: ProductCard(
-                                    productDataModel: info[index],
-                                  ),
+                                child: ProductCard(
+                                  productDataModel: info[index],
                                 ),
                               ),
                             );

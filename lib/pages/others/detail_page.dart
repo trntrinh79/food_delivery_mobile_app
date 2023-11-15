@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
-import 'package:food_delivery_mobile_app/cubit/cart_cubit/cubit/cart_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/favorite_cubit/favorite_cubit.dart';
 import 'package:food_delivery_mobile_app/utils/app_icon.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
@@ -22,8 +23,7 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(builder: (context, state) {
       if (state is DetailState) {
-        DetailState detail = state as DetailState;
-        var detailinfo = detail.place;
+        var detailinfo = state.place;
         return Scaffold(
           body: Stack(children: [
             Positioned(
@@ -32,12 +32,12 @@ class _DetailPageState extends State<DetailPage> {
               child: Container(
                 width: double.maxFinite,
                 height: 450,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColor.productBG,
                 ),
                 child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 100,
                     ),
                     Image.network(
@@ -111,15 +111,15 @@ class _DetailPageState extends State<DetailPage> {
                               size: 24,
                               color: AppColor.appTheme,
                             ),
-                            const Text(
+                            Text(
                               "5",
                               style: AppFontStyle.TITLE_MEDIUM,
                             ),
                           ],
                         ),
-                        Align(
+                        const Align(
                           alignment: Alignment.topLeft,
-                          child: const Text(
+                          child: Text(
                             "Introduce",
                             style: AppFontStyle.TITLE_LARGE,
                           ),
@@ -148,15 +148,26 @@ class _DetailPageState extends State<DetailPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: const Icon(
-                    Icons.favorite_sharp,
-                    size: 32,
+                GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<FavoriteCubit>(context)
+                        .addToFavorite(detailinfo);
+                    const snackBar = SnackBar(
+                      duration: Duration(milliseconds: 100),
+                      content: Text("Added to favorite"),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: const Icon(
+                      Icons.favorite_sharp,
+                      size: 32,
+                    ),
                   ),
                 ),
                 Container(
@@ -168,8 +179,13 @@ class _DetailPageState extends State<DetailPage> {
                         var appCubit = BlocProvider.of<CartCubit>(context);
                         // Add the item to the cart
 
-                        await Future.delayed(Duration(seconds: 0), () {
+                        await Future.delayed(const Duration(seconds: 0), () {
                           appCubit.addToCart(state.place);
+                          const snackBar = SnackBar(
+                            duration: Duration(milliseconds: 100),
+                            content: Text("Added to cart"),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         });
                         await Future.delayed(const Duration(seconds: 1), () {
                           print(detailinfo.name);
