@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/cubit/navigationbar_item.dart';
+import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigationbar_item.dart';
 
 part 'navigation_state.dart';
 

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_mobile_app/pages/tabs/home/model/home_product_data_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/favorite_cubit/favorite_cubit.dart';
+import 'package:food_delivery_mobile_app/model/home_product_data_model.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
@@ -24,7 +28,15 @@ class ProductCard extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    BlocProvider.of<FavoriteCubit>(context)
+                        .addToFavorite(productDataModel);
+                    const snackBar = SnackBar(
+                      duration: Duration(milliseconds: 100),
+                      content: Text("Added to favorite"),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
                   child: const Icon(Icons.favorite_border_rounded)),
             ),
             const SizedBox(
@@ -40,20 +52,20 @@ class ProductCard extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 160),
-                  child: Align(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
                       alignment: Alignment.topLeft,
                       child: Text(
                         productDataModel.name,
                         style: AppFontStyle.TITLE_PRODUCT,
-                      )),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                      ),
+                    ),
                     Opacity(
                       opacity: 0.38,
                       child: Text(
@@ -61,14 +73,31 @@ class ProductCard extends StatelessWidget {
                         style: AppFontStyle.TITLE_LARGE,
                       ),
                     ),
-                    const Icon(
-                      Icons.add_box_outlined,
-                      size: 24,
-                    )
                   ],
-                )
+                ),
+                GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<CartCubit>(context)
+                        .addToCart(productDataModel);
+                    const snackBar = SnackBar(
+                      duration: Duration(milliseconds: 100),
+                      content: Text("Added to cart"),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(
+                      Icons.add,
+                      size: 24,
+                    ),
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

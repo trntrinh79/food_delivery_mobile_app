@@ -8,6 +8,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/1447/PNG/512/32382hamburger_98925.png",
       "category": "Fast Food",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 2,
@@ -17,6 +19,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/881/PNG/512/Pizza_icon-icons.com_68706.png",
       "category": "Italian",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 3,
@@ -26,6 +30,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/1465/PNG/512/549sushi_100336.png",
       "category": "Japanese",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 4,
@@ -35,6 +41,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/1864/PNG/512/iconfinder-healthcare-and-medicalorganicvegansaladhealthy-foodavocadodietvegetarianfoodfruit-4394779_119506.png",
       "category": "Salads",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 5,
@@ -44,6 +52,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/236/PNG/256/Dish_Pasta_Spaghetti_26373.png",
       "category": "Italian",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 6,
@@ -53,6 +63,8 @@ class FoodData {
       "imageUrl":
           "https://static.wikia.nocookie.net/club-penguin-rewritten/images/f/fc/Sushi_Tray.png/revision/latest/thumbnail/width/360/height/450?cb=20181102045242",
       "category": "Japanese",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 7,
@@ -62,6 +74,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/3277/PNG/512/fried_chicken_bucket_chicken_wings_food_icon_208005.png",
       "category": "Appetizers",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 8,
@@ -71,6 +85,8 @@ class FoodData {
       "imageUrl":
           "https://cdn.icon-icons.com/icons2/1447/PNG/512/32387taco_98856.png",
       "category": "Mexican",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 9,
@@ -79,6 +95,8 @@ class FoodData {
       "price": 19.99,
       "imageUrl": "https://cdn-icons-png.flaticon.com/512/856/856113.png",
       "category": "Steakhouse",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
     {
       "id": 10,
@@ -87,6 +105,8 @@ class FoodData {
       "price": 4.99,
       "imageUrl": "https://cdn-icons-png.flaticon.com/512/6639/6639805.png",
       "category": "Desserts",
+      "quantity": 0,
+      "totalPrice": 0.0,
     },
   ];
 }
