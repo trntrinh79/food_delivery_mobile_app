@@ -1,4 +1,4 @@
-![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-15 at 15 11 02](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/80dc6931-c2ba-496d-94f9-1d88a620026b)
+
 ## Getting Started
 
 Welcome Pages                                                              
@@ -10,7 +10,8 @@ Home Page
 ![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-13 at 11 01 26](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/97833010-24cc-4b5f-973d-1c3b973385e2)
 ![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-13 at 11 01 38](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/0570b33c-2793-4755-8339-fc5878525620)
 
-Favorite Page 
+Favorite Page                                                                                           
+![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-15 at 15 17 08](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/c3f15672-ab24-48a7-9b1a-e4bb33c46b62)
 ![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-15 at 15 11 02](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/5a57b8d1-ddce-4d0c-b42a-7976478e0325)
 
 
