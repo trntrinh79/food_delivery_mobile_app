@@ -12,3 +12,7 @@ class NavigationState extends Equatable {
 class NavigationInitial extends NavigationState {
   NavigationInitial(super.navbarItem, super.index);
 }
+
+class NavigationHomePage extends NavigationState {
+  NavigationHomePage(super.navbarItem, super.index);
+}

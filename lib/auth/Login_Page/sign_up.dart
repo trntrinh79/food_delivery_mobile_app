@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp> {
             child: Center(
               child: Column(
                 children: [
-                  Image.asset("img/logo.png"),
+                  Image.asset("assets/img/logo.png"),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -128,7 +128,7 @@ class _SignUpState extends State<SignUp> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                "img/googlelogo.png",
+                                "assets/img/googlelogo.png",
                                 fit: BoxFit.fill,
                               ),
                               SizedBox(
@@ -165,7 +165,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Image.asset("img/fblogo.png"),
+                          child: Image.asset("assets/img/fblogo.png"),
                         ),
                       ),
                       SizedBox(
@@ -178,7 +178,7 @@ class _SignUpState extends State<SignUp> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(16),
-                          child: Image.asset("img/twitterlogo.png"),
+                          child: Image.asset("assets/img/twitterlogo.png"),
                         ),
                       ),
                     ],
@@ -220,8 +220,8 @@ class _SignUpState extends State<SignUp> {
 
   void signUp() async {
     // String userName = _userNameController.text;
-    String email = _emailController.text;
-    String password = _passwordController.text;
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
 
     User? user = await _auth.signUpWithEmailandPassword(email, password);
     if (user != null) {

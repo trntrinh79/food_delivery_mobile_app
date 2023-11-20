@@ -8,6 +8,11 @@ class AppInitial extends AppState {
   List<Object> get props => [];
 }
 
+class SplashState extends AppState {
+  @override
+  List<Object> get props => [];
+}
+
 class WelcomeState extends AppState {
   @override
   List<Object> get props => [];

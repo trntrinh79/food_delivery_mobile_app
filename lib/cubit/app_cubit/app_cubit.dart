@@ -9,11 +9,14 @@ part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
   AppCubit({required this.data}) : super(AppInitial()) {
-    emit(WelcomeState());
+    emit(SplashState());
   }
   final FoodData data;
   late final places;
   List<ProductDataModel> cartItems = [];
+  void goToWelcomePage() {
+    emit(WelcomeState());
+  }
 
   void getData() async {
     try {

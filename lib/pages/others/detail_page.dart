@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/favorite_cubit/favorite_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigation_cubit.dart';
 import 'package:food_delivery_mobile_app/utils/app_icon.dart';
 import 'package:food_delivery_mobile_app/utils/colors.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
@@ -60,7 +61,13 @@ class _DetailPageState extends State<DetailPage> {
                       onTap: () => BlocProvider.of<AppCubit>(context).goHome(),
                       child: const AppIcon(icon: Icons.arrow_back_ios)),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        // Navigator.pop(context);
+
+                        // Future.delayed(Duration(seconds: 2), () {
+                        //   context.read<NavigationCubit>().showCartPage();
+                        // });
+                      },
                       child: const AppIcon(icon: Icons.shopping_cart_outlined)),
                 ],
               ),

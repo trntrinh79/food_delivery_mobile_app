@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/auth/Login_Page/sign_in.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 
 import 'package:food_delivery_mobile_app/utils/colors.dart';
@@ -65,11 +66,9 @@ class _WelcomePageState extends State<WelcomePage> {
                     Container(),
                     GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const MainPage()));
-                        BlocProvider.of<AppCubit>(context).getData();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                        // BlocProvider.of<AppCubit>(context).getData();
                       },
                       child: const Text(
                         "Skip",

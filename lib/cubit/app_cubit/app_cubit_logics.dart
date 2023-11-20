@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/auth/splash_screen.dart';
 import 'package:food_delivery_mobile_app/auth/welcomepage.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
@@ -23,6 +24,9 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
           if (state is WelcomeState) {
             print("Welcome state");
             return const WelcomePage();
+          }
+          if (state is SplashState) {
+            return const SplashScreen();
           }
           if (state is DetailState) {
             print("detail state");

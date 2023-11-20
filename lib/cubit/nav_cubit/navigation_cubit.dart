@@ -27,4 +27,8 @@ class NavigationCubit extends Cubit<NavigationState> {
         break;
     }
   }
+
+  void showHomePage() {
+    emit(NavigationHomePage(NavbarItem.home, 0));
+  }
 }

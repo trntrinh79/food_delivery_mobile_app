@@ -59,7 +59,10 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> removeFromCart(ProductDataModel product) async {
     productList.removeWhere((item) => item.id == product.id);
-    emit(CartLoadedState(List.from(productList), product.totalCartPrice));
+    double newTotalCartValue =
+        productList.fold(0, (sum, item) => sum + item.price * item.quantity);
+
+    emit(CartLoadedState(List.from(productList), newTotalCartValue));
   }
 
   double calculateTotalPrice(ProductDataModel product) {

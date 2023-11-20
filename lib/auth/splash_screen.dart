@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-
-import 'package:food_delivery_mobile_app/auth/welcomepage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   Future<void> _navigateToNextScreen(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 3));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => WelcomePage()),
-    );
+    await Future.delayed(const Duration(seconds: 3), () {
+      BlocProvider.of<AppCubit>(context).goToWelcomePage();
+    });
   }
 
   @override
@@ -21,10 +21,8 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Image.asset("img/logo.png"),
-            ),
-            Row(
+            Image.asset("assets/img/logo.png"),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
@@ -47,7 +45,7 @@ class SplashScreen extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
+            const Text(
               "Food Delivery App",
               style: TextStyle(
                 fontSize: 18,

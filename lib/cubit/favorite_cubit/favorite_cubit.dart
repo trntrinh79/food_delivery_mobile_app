@@ -21,6 +21,10 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   void removeFromFavorite(ProductDataModel product) {
     favoriteProducts.removeWhere((item) => item.id == product.id);
-    emit(FavoriteLoaded(List.from(favoriteProducts)));
+    emit(
+      FavoriteLoaded(
+        List.from(favoriteProducts),
+      ),
+    );
   }
 }

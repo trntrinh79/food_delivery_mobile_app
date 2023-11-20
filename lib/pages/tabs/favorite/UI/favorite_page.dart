@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import 'package:food_delivery_mobile_app/cubit/favorite_cubit/favorite_cubit.dart';
+import 'package:food_delivery_mobile_app/cubit/nav_cubit/navigation_cubit.dart';
 import 'package:food_delivery_mobile_app/utils/fonts.dart';
 
 import 'package:food_delivery_mobile_app/widget/favorite_card.dart';
@@ -20,7 +21,6 @@ class FavoriteFood extends StatefulWidget {
 class _FavoriteFoodState extends State<FavoriteFood> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     context.read<FavoriteCubit>().loadFavorites();
   }
@@ -97,6 +97,34 @@ class _FavoriteFoodState extends State<FavoriteFood> {
                           "You don’t have any foods in favorite at this time!",
                           style: AppFontStyle.BODY_LARGE,
                         ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            BlocProvider.of<NavigationCubit>(context)
+                                .showHomePage();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFFDA7455),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16.0, horizontal: 24.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              "Explore",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: "Roboto",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -160,24 +188,21 @@ class _FavoriteFoodState extends State<FavoriteFood> {
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: item.length,
-                              scrollDirection: Axis.vertical,
                               itemBuilder: (context, int index) {
                                 final product = state.favoriteProducts[index];
-                                bool last = item.length == (index + 1);
                                 return Padding(
-                                  padding:
-                                      EdgeInsets.only(bottom: last ? 0 : 16),
+                                  padding: EdgeInsets.only(
+                                      bottom:
+                                          item.length == (index + 1) ? 0 : 16),
                                   child: Slidable(
-                                      key: const Key("hello"),
+                                      key: ValueKey(product.id),
                                       endActionPane: ActionPane(
                                           dismissible: DismissiblePane(
                                             onDismissed: () {
                                               BlocProvider.of<FavoriteCubit>(
                                                       context)
                                                   .removeFromFavorite(product);
-                                              setState(() {});
                                             },
-                                            key: const Key("helklo"),
                                           ),
                                           extentRatio: 0.2,
                                           motion: const ScrollMotion(),
@@ -191,7 +216,6 @@ class _FavoriteFoodState extends State<FavoriteFood> {
                                                         context)
                                                     .removeFromFavorite(
                                                         product);
-                                                setState(() {});
                                               },
                                               backgroundColor:
                                                   Colors.grey.shade50,

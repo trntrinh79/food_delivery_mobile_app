@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_delivery_mobile_app/auth/Firebase_auth/firebase_auth_services.dart';
+import 'package:food_delivery_mobile_app/auth/auth_cubit/auth_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit.dart';
 import 'package:food_delivery_mobile_app/cubit/app_cubit/app_cubit_logics.dart';
 import 'package:food_delivery_mobile_app/cubit/cart_cubit/cart_cubit.dart';
@@ -34,6 +36,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<FavoriteCubit>(
           create: (context) => FavoriteCubit(),
+        ),
+        BlocProvider<AuthCubit>(
+          create: (context) => AuthCubit(FirebaseAuthService()),
         ),
       ],
       child: const MaterialApp(
