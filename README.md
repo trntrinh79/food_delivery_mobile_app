@@ -1,6 +1,6 @@
 
 ## Getting Started
-Hi2
+Hi3
 Welcome Pages                                                              
 ![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-13 at 11 01 13(2)](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/847802e6-28ca-48fb-a3f5-f1351551dd1d)
 ![Simulator Screenshot - iPhone 15 Pro Max - 2023-11-13 at 11 01 17](https://github.com/trntrinh79/food_delivery_mobile_app/assets/91517750/77f97472-2346-4728-ba51-c429ff6c97a4)
