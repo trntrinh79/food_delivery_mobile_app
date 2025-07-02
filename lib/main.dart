@@ -13,7 +13,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
-
+// No files provided as arguments. Read from stdin and print each line.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
